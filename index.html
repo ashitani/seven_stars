@@ -1,0 +1,140 @@
+
+<html>
+<head>
+<link rel="stylesheet" href="./bootstrap-3.3.4-dist/css/bootstrap.min.css">
+
+<style type="text/css">
+<!--
+.container-fluid {
+margin-right: auto;
+margin-left: 50px;
+max-width: 380px;
+}
+-->
+</style>
+
+<script type="text/javascript">
+var state=[0,0,0,0,0,0,0,0];
+var count=0;
+
+function reset(){
+    for (var i=1 ; i<=7 ; i++){
+        state[i]=0;
+    }
+    count=0;
+    update();
+}
+
+function update(){
+    var sum=0;
+    for (var i=1 ; i<=7 ; i++){
+        var theid='star'+i;
+        if(state[i]==1){
+            document.getElementById(theid).style.color="red";
+        }else{
+            document.getElementById(theid).style.color="black";            
+        }
+        sum+=state[i];
+    }
+    document.getElementById('counter').innerHTML=count;    
+    if(sum>=7){
+      document.getElementById('message').innerHTML="おめでとう！"; 
+    }else{
+      document.getElementById('message').innerHTML=""; 
+    }
+}
+
+function clicked(btnNo){
+   count+=1;
+    for (var j=-1 ; j<=1 ; j++){
+        var index=btnNo+j;
+        if( index<=0){index+=7;}
+        if( index>=8){index-=7;}
+        state[index]=1-state[index];
+    }
+
+
+    var theid='star'+btnNo;
+    update();
+}
+</script>
+</header>
+
+<body>
+
+
+<div class="container-fluid">
+        <h1>Seven Stars</h1>
+      <p>クリックして全ての星を光らせてみよう。</p>
+      <p> 7回で出来たら上級者！</p>
+      <br>
+
+      <div class="row">
+        <div class="col-xs-3"></div>
+        <div class="col-xs-1">
+          <span class="glyphicon glyphicon-star" id="star1" onClick="clicked(1)"></span>
+        </div>
+        <div class="col-xs-8"></div>
+      </div>
+      <br>
+
+      <div class="row">
+        <div class="col-xs-1"></div>
+        <div class="col-xs-1">
+          <span class="glyphicon glyphicon-star" id="star2" onClick="clicked(2)"></span>
+        </div>
+        <div class="col-xs-3"></div>
+        <div class="col-xs-1">
+          <span class="glyphicon glyphicon-star" id="star7" onClick="clicked(7)"></span>
+        </div>
+        <div class="col-xs-6"></div>
+      </div>
+      <br><br>
+
+      <div class="row">
+        <div class="col-xs-1">
+          <span class="glyphicon glyphicon-star" id="star3" onClick="clicked(3)"></span>
+        </div>
+        <div class="col-xs-2"></div>
+        <div class="col-xs-1" id="counter">0</div>
+        <div class="col-xs-2"></div>
+        <div class="col-xs-1">
+          <span class="glyphicon glyphicon-star" id="star6" onClick="clicked(6)"></span>
+        </div>
+        <div class="col-xs-5"></div>
+      </div>
+      <br><br>
+
+      <div class="row">
+        <div class="col-xs-2"></div>
+        <div class="col-xs-1">
+          <span class="glyphicon glyphicon-star" id="star4" onClick="clicked(4)"></span>
+        </div>
+        <div class="col-xs-1"></div>
+        <div class="col-xs-1">
+          <span class="glyphicon glyphicon-star" id="star5" onClick="clicked(5)"></span>
+        </div>
+        <div class="col-xs-7"></div>
+      </div>
+      <br><br>
+ 
+      <div class="row">
+          <div class="col-xs-2" ></div>
+          <div class="col-xs-8" id="message"></div>
+          <div class="col-xs-2" ></div>
+      </div>
+      <br>
+      <div class="row">
+          <div class="col-xs-2" ></div>
+          <div class="col-xs-8">
+            <button onClick="reset()">リセット</button>
+          </div>
+          <div class="col-xs-2" ></div>
+      </div>
+
+
+</div>
+
+
+</body>
+</html>
