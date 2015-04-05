@@ -7,6 +7,6 @@
 # License
 
 Apache License 2.0です。
-同じくApache License 2.0の[BootStrap](http://getbootstrap.com/)を使用・同梱しています。
+同じくApache License 2.0の[Bootstrap](http://getbootstrap.com/)を使用・同梱しています。
 
 
